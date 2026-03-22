@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAM Policy Explainer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-left">
+            <span class="logo">IAM Policy Explainer</span>
+        </div>
+        <div class="topbar-right">
+            <button class="dark-toggle" onclick="toggleDark()">Dark Mode</button>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1>Understand and harden your AWS IAM policies instantly</h1>
+        <p>Paste any IAM policy below. Get a plain English explanation, security risks, recommendations, and a hardened version — powered by AI.</p>
+    </div>
+
+    <div class="main">
+        <div class="input-panel">
+            <div class="panel-header">
+                <span>Your IAM Policy</span>
+                <div class="chips">
+                    <button class="chip" onclick="loadSample('admin')">Full admin</button>
+                    <button class="chip" onclick="loadSample('s3')">S3 read only</button>
+                    <button class="chip" onclick="loadSample('ec2')">EC2 access</button>
+                </div>
+            </div>
+            <textarea id="policy-input" placeholder='{
+  "Version": "2012-10-17",
+  "Statement": [...]
+}'></textarea>
+            <div class="btn-row">
+                <button id="explain-btn" onclick="explainPolicy()">Explain Policy</button>
+                <button class="secondary" onclick="clearAll()">Clear</button>
+            </div>
+            <div id="error-box" class="error-box"></div>
+        </div>
+
+        <div class="output-panel" id="output-panel">
+            <div class="placeholder" id="placeholder">
+                <p>Your analysis will appear here</p>
+            </div>
+
+            <div id="result" style="display:none">
+                <div class="result-section">
+                    <div class="result-header">
+                        <span>Analysis</span>
+                        <span id="severity-badge" class="badge"></span>
+                    </div>
+                    <p id="summary" class="summary-text"></p>
+
+                    <div class="section-title">Security risks</div>
+                    <ul id="risks-list"></ul>
+
+                    <div class="section-title">Recommendations</div>
+                    <ul id="recs-list"></ul>
+                </div>
+
+                <div class="result-section">
+                    <div class="result-header">
+                        <span>Hardened Policy</span>
+                        <button class="copy-btn" onclick="copyHardened()">Copy</button>
+                    </div>
+                    <pre id="hardened-output"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# Environment variables - NEVER push these
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+backend/venv/
+*.egg-info/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# AWS credentials - extra safety
+credentials
+.aws/
+
+# Logs
+*.log
+gunicorn.log
+
+# IDE files
+.vscode/
+.idea/
